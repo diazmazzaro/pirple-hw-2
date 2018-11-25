@@ -5,29 +5,54 @@
 
  // Dependencies
 var fs = require('fs');
+var path = require('path');
 
 // environments
 var environments = {
 	// Staging (default) environment
 	staging : {
-	  'httpPort'  : 2602,
-	  'httpsPort' : 2601,
-	  'envName'   : 'staging',
-	  'ssl'       : {
+	  'envName'    : 'staging',
+	  // Base directory path for file db .
+	  'fileDbRoot' : path.resolve(__dirname,'./_data/'),
+    // Web Server ports
+	  'httpPort'   : 2602,
+	  'httpsPort'  : 2601,
+	  // SSL certificate
+	  'ssl'        : {
 	  	'key': fs.readFileSync('./ssl/key.pem'),
 		  'cert': fs.readFileSync('./ssl/cert.pem')
 		},
+		// Twilio setup.
+		'twilio'     : {
+	    'accountSid' : 'ACb32d411ad7fe886aac54c665d25e5c5d',
+	    'authToken' : '9455e3eb3109edc12e3d8c92768f7a67',
+	    'fromPhone' : '+15005550006'
+	  },
+	  // key for crypto
+	  'hashingSecret' : 'thisIsASecret'
 	},
 
 	// Production environment
 	production : {
-	  'httpPort'  : 3012,
-	  'httpsPort' : 3011,
-	  'envName'   : 'production',
-	  'ssl'       : {
+		'envName'    : 'production',
+		// Base directory path for file db .
+	  'fileDbRoot' : path.resolve(__dirname,'./.data/'),
+    // Web Server ports
+	  'httpPort'   : 3012,
+	  'httpsPort'  : 3011,
+	  // SSL certificate
+	  'ssl'        : {
 	  	'key': fs.readFileSync('./ssl/key.pem'),
 		  'cert': fs.readFileSync('./ssl/cert.pem')
 		},
+				// Twilio setup.
+		'twilio'     : {
+	    'accountSid' : 'ACb32d411ad7fe886aac54c665d25e5c5d',
+	    'authToken' : '9455e3eb3109edc12e3d8c92768f7a67',
+	    'fromPhone' : '+15005550006'
+	  },
+	  // key for crypto
+	  'hashingSecret' : 'thisIsASecret'
 	}
 }
 
