@@ -21,7 +21,7 @@ var environments = {
 	  'ssl'        : {
 	  	'key': fs.readFileSync('./ssl/key.pem'),
 		  'cert': fs.readFileSync('./ssl/cert.pem')
-		},
+	   },
 		// Twilio setup.
 		'twilio'     : {
 	    'accountSid' : 'ACb32d411ad7fe886aac54c665d25e5c5d',
@@ -29,7 +29,10 @@ var environments = {
 	    'fromPhone' : '+15005550006'
 	  },
 	  // key for crypto
-	  'hashingSecret' : 'thisIsASecret'
+	  'hashingSecret' : 'thisIsASecret',
+	  'stripe'     :{
+	  	'key'       : 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
+	  }
 	},
 
 	// Production environment
@@ -45,14 +48,17 @@ var environments = {
 	  	'key': fs.readFileSync('./ssl/key.pem'),
 		  'cert': fs.readFileSync('./ssl/cert.pem')
 		},
-				// Twilio setup.
+		// Twilio setup.
 		'twilio'     : {
 	    'accountSid' : 'ACb32d411ad7fe886aac54c665d25e5c5d',
 	    'authToken' : '9455e3eb3109edc12e3d8c92768f7a67',
 	    'fromPhone' : '+15005550006'
 	  },
 	  // key for crypto
-	  'hashingSecret' : 'thisIsASecret'
+	  'hashingSecret' : 'thisIsASecret',
+	  'stripe'     :{
+	  	'key'       : 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
+	  }
 	}
 }
 

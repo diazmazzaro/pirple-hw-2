@@ -128,7 +128,7 @@ tokens.put = function(data,callback){
 // Optional data: none
 tokens.delete = function(data,callback){
   // Check that id is valid
-  var id = typeof(data.queryStringObject.id) == 'string' && data.queryStringObject.id.trim().length == 20 ? data.queryStringObject.id.trim() : false;
+  var id = typeof(data.qsObj.id) == 'string' && data.qsObj.id.trim().length == 20 ? data.qsObj.id.trim() : false;
   if(id){
     // Lookup the token
     fileDB.read('tokens',id,function(err,tokenData){

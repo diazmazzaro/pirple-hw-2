@@ -23,6 +23,11 @@ server._getStatusCodeColorful = function(code){
   return (str =='2' ? '\x1b[32m\x1b[1m' : str =='3' ? '\x1b[36m\x1b[1m' :str =='4' ? '\x1b[31m\x1b[1m' : str =='5' ? '\x1b[33m\x1b[1m' : '') + code + '\x1b[0m';
 }
 
+// Return status code in colors
+server._getMethodeColorful = function(methode){
+  return (methode =='get' ? '\x1b[32m\x1b[1m' : methode =='put' ? '\x1b[34m\x1b[1m' :methode =='delete' ? '\x1b[31m\x1b[1m' : methode =='post' ? '\x1b[33m\x1b[1m' : '') + methode + '\x1b[0m';
+}
+
 // All the server logic for both the http and https server
 server.handler = function(req,res){
 
@@ -73,7 +78,7 @@ server.handler = function(req,res){
         res.setHeader('Content-Type', 'application/json');
         res.writeHead(statusCode);
         res.end(payloadString);
-        console.log(new Date().toISOString().split('T')[1], data.method, ':', data.path, '-',server._getStatusCodeColorful(statusCode));
+        console.log(new Date().toISOString().split('T')[1].replace('Z', ''), server._getMethodeColorful(data.method), ':', data.path, '-',server._getStatusCodeColorful(statusCode));
       });
 
   });

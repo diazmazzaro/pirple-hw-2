@@ -30,7 +30,7 @@ lib.getRootPath = function (create) {
 lib.getPath = function(dir, file, create){
   var _root = lib.getRootPath(create);
   var _dir = path.resolve(_root, dir);
-  var _file = /(\.josn)$/i.test(file) ? file : (file + '.josn');
+  var _file = /(\.josn)$/i.test(file) ? file : (file + '.json');
 
   var dirExists = fs.existsSync(_dir);
 
@@ -139,7 +139,7 @@ lib.delete = function(dir,file,callback){
 
 // List all the items in a directory
 lib.list = function(dir,callback){
-  fs.readdir(llib.getPath(dir), function(err,data){
+  fs.readdir(lib.getPath(dir), function(err,data){
     if(!err && data && data.length > 0){
       var trimmedFileNames = [];
       data.forEach(function(fileName){

@@ -75,7 +75,7 @@ users.post = function(data,callback){
 
       } else {
         // User alread exists
-        callback(400,{'Error' : 'A user with that phone number already exists'});
+        callback(400,{'Error' : 'A user with that email already exists'});
       }
     });
 
@@ -138,7 +138,6 @@ users.put = function(data,callback){
   var phone = typeof(data.payload.phone) == 'string' && data.payload.phone.trim().length == 10 ? data.payload.phone.trim() : false;
   var address = typeof(data.payload.address) == 'string' && data.payload.address.trim().length > 0  ? data.payload.address.trim() : false;
 
-  console.log(email)
   // Error if phone is invalid
   if(email){
     var id = utils.getValidDirName(email);
@@ -195,48 +194,27 @@ users.put = function(data,callback){
 // Cleanup old checks associated with the user
 users.delete = function(data,callback){
   // Check that phone number is valid
-  var phone = typeof(data.queryStringObject.phone) == 'string' && data.queryStringObject.phone.trim().length == 10 ? data.queryStringObject.phone.trim() : false;
-  if(phone){
+  var email = typeof(data.payload.email) == 'string' && data.payload.email.trim().length > 0  ? data.payload.email.trim() : false;
+
+  if(email){
+
+    var id = utils.getValidDirName(email);
 
     // Get token from headers
     var token = typeof(data.headers.token) == 'string' ? data.headers.token : false;
 
     // Verify that the given token is valid for the phone number
-    handlers._tokens.verifyToken(token,phone,function(tokenIsValid){
+    tokens.verifyToken(token,email,function(tokenIsValid){
       if(tokenIsValid){
         // Lookup the user
-        fileDB.read('users',phone,function(err,userData){
+        fileDB.read('users',id,function(err,userData){
           if(!err && userData){
             // Delete the user's data
-            fileDB.delete('users',phone,function(err){
+            fileDB.delete('users',id,function(err){
               if(!err){
-                // Delete each of the checks associated with the user
-                var userChecks = typeof(userData.checks) == 'object' && userData.checks instanceof Array ? userData.checks : [];
-                var checksToDelete = userChecks.length;
-                if(checksToDelete > 0){
-                  var checksDeleted = 0;
-                  var deletionErrors = false;
-                  // Loop through the checks
-                  userChecks.forEach(function(checkId){
-                    // Delete the check
-                    fileDB.delete('checks',checkId,function(err){
-                      if(err){
-                        deletionErrors = true;
-                      }
-                      checksDeleted++;
-                      if(checksDeleted == checksToDelete){
-                        if(!deletionErrors){
-                          callback(200);
-                        } else {
-                          callback(500,{'Error' : "Errors encountered while attempting to delete all of the user's checks. All checks may not have been deleted from the system successfully."})
-                        }
-                      }
-                    });
-                  });
-                } else {
-                  callback(200);
-                }
-              } else {
+                callback(200);
+              }
+              else {
                 callback(500,{'Error' : 'Could not delete the specified user'});
               }
             });
