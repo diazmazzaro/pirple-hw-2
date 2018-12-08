@@ -47,4 +47,8 @@ _POST_ body to __~/users__
 	"tosAgreement" : true
 }
 ```
+Responce
+```javascript
+{ }
+```
 
