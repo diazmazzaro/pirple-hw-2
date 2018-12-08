@@ -216,3 +216,20 @@ Response
 ## 5. Checkout
 
 Final step, this Endpoint can list the orders that are going to be purchased and execute the checkout process (Using __Stripe__ for credit card payment and __Mailgun__ for receipt mailing)
+
+### Get amount to ckeckout
+_GET_ body to __~/checkout__ (email is required) 
+```javascript
+{
+	"email" : "test@gmail.com"
+}
+```
+
+Response
+```javascript
+{
+    "userId": "diazmazzaro_gmail.com",
+    "total": 3.2,
+    "count": 1
+}
+```
