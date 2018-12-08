@@ -195,8 +195,8 @@ _GET_ body to __~/orders__ (email is required)
 Response
 ```javascript
 {
-    "userId": "diazmazzaro_gmail.com",
-    "email": "diazmazzaro@gmail.com",
+    "userId": "test_gmail.com",
+    "email": "test@gmail.com",
     "orders": [
         {
             "menuId": "menu1",
@@ -211,3 +211,8 @@ Response
     ]
 }
 ```
+
+
+## 5. Checkout
+
+Final step, this Endpoint can list the orders that are going to be purchased and execute the checkout process (Using __Stripe__ for credit card payment and __Mailgun__ for receipt mailing)
