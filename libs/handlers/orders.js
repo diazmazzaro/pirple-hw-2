@@ -24,17 +24,16 @@ orders.requests = function(data,callback){
 };
 
 // Order - get
-// Required data: menuid, email
+// Required data: email
 // Optional data: none
 orders.get = function(data,callback){
   // Check that all required fields are filled out
-  var menuId = typeof(data.payload.menuId) == 'string' && data.payload.menuId.trim().length > 0 ? data.payload.menuId.trim() : false;
   var email = typeof(data.payload.email) == 'string' && data.payload.email.trim().length > 0  && utils.validEmail(data.payload.email.trim()) ? data.payload.email.trim() : false;
 
   // Get user id (based on email)
   var id = utils.getValidDirName(email);
 
-  if(menuId && email){
+  if(email){
 
   	// Get token from headers
   	var token = typeof(data.headers.token) == 'string' ? data.headers.token : false;

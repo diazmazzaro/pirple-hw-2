@@ -165,6 +165,7 @@ utils.sendTwilioSms = function(phone,msg,callback){
   }
 };
 
+// Safety JSON parse
 utils.parseJSON = function(str){
   try{
     var obj = JSON.parse(str);
@@ -174,9 +175,8 @@ utils.parseJSON = function(str){
   }
 };
 
+// Validates Email
 utils.validEmail = function(email){
-  console.log('email', email)
-  console.log('test', /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 

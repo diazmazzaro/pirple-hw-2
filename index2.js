@@ -9,8 +9,6 @@ app.initialize = function(){
 }
 
 app.initialize();
-// require('./libs/stripe-api').createCharge(2232, 'usd', 'visa', 'test request', (err, data) =>{
-// 	console.log(err, data)
-// })
+
 
 module.exports = app;

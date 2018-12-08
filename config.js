@@ -30,8 +30,12 @@ var environments = {
 	  },
 	  // key for crypto
 	  'hashingSecret' : 'thisIsASecret',
-	  'stripe'     :{
+	  'stripe'        : {
 	  	'key'       : 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
+	  },
+	  'mailgun'       : {
+      'key' : '4e28dcdd0845a4576edf856073e18d5d-059e099e-0e15e915',
+      'from': 'Pirple Pizza Delivery System <pizzadelivery@pirple.com>'
 	  }
 	},
 
@@ -56,8 +60,12 @@ var environments = {
 	  },
 	  // key for crypto
 	  'hashingSecret' : 'thisIsASecret',
-	  'stripe'     :{
+	  'stripe'        : {
 	  	'key'       : 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
+	  },
+	  'mailgun'       : {
+      'key' : '4e28dcdd0845a4576edf856073e18d5d-059e099e-0e15e915',
+      'from': 'Pirple Pizza Delivery System <pizzadelivery@pirple.com>'
 	  }
 	}
 }

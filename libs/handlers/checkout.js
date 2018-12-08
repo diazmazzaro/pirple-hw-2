@@ -4,10 +4,11 @@
  */
 
 // App Dependencies
-var fileDB = require('../file-db');
-var utils = require('../utils');
-var tokens = require('./tokens');
-var stripe = require('../stripe-api');
+var fileDB  = require('../file-db');
+var utils   = require('../utils');
+var tokens  = require('./tokens');
+var stripe  = require('../stripe-api');
+var mailgun = require('../mailgun-api')
 
 
 
@@ -61,6 +62,7 @@ checkout.get = function(data,callback){
                 }
               })
               checkout.total = Math.round10(checkout.total, -2);
+              
               callback(200, checkout);
             }
             else{
@@ -112,18 +114,28 @@ checkout.post = function(data,callback){
                   checkout.total += item.price;
                   checkout.count += 1;
                   item.purchased = true;
+                  item.purchaseDate = Date.now();
                 }
               })
+              // If exists items to purchase
               if(checkout.count){
+                // Total amount
                 checkout.total = Math.round10(checkout.total, -2);
-
+                // call stripe API to create charge (fix dolar with decimals to cents)
                 stripe.createCharge(Math.round10(checkout.total * 100, 0), 'usd', card, email, checkout.count + ' items purchased. Total $' + checkout.total + '.', (err, stripeData) =>{
                   if(err){
                     callback(500,err);  
                   } else {
                     fileDB.update('orders',id,data,function(err){
                       if(!err){
-                        callback(200, stripeData.data);
+                        mailgun.sendEmail(email, 'Pizza Delivery receipt - $' + checkout.total, 'Here is your receipt for ' + checkout.count + ' items purchased. Total $' + checkout.total + '.', (err, mailgunData) =>{
+                          if(err){
+                            callback(200, { warning : err})
+                          }
+                          else{
+                            callback(200)
+                          }
+                        })
                       } else {
                         callback(500,{'Error' : 'Could not remove the order'});
                       }
