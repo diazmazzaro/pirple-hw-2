@@ -15,7 +15,7 @@ _POST_ body to __~/tokens__
 	"password" : "12345678"
 }
 ```
-Responce
+Response
 ```javascript
 {
     "email": "mail@server.com",
@@ -47,7 +47,7 @@ _POST_ body to __~/users__
 	"tosAgreement" : true
 }
 ```
-Responce
+Response
 ```javascript
 { }
 ```
@@ -60,7 +60,7 @@ _PUT_ body to __~/users__ (email is the key for users)
 	"address" : "NEW street, CA"
 }
 ```
-Responce
+Response
 ```javascript
 { }
 ```
@@ -72,13 +72,13 @@ _DELETE_ body to __~/users__ (Only email is required)
 	"email" : "test@gmail.com"
 }
 ```
-Responce
+Response
 ```javascript
 { }
 ```
 
 ### Get User
-_GET_ body to __~/users__ (Only email is required)
+_GET_ to __~/users__ (Only email is required)
 You can get by body:
 ```javascript
 {
@@ -90,7 +90,7 @@ Or you can get by query url:
 ```javascript
 ~/users?email=test@gmail.com
 ```
-Responce
+Response
 ```javascript
 {
 	"firstName" : "test",
@@ -102,3 +102,21 @@ Responce
 }
 ```
 
+## 3. Menus
+
+Endpoint for menus listing.
+
+### Get especific menu item
+_GET_ to __~/menus__ (email and menu id is required)
+```javascript
+~/menus?email=test@gmail.com&menuid=menu1
+```
+Response
+```javascript
+{
+    "id": "menu1",
+    "name": "GODFATHER",
+    "description": "Pepperoni, fresh tomato, capsicum, Italian sausage, olives, oregano & garlic sauce",
+    "price": 3.2
+}
+```
