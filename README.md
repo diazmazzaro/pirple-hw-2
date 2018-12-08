@@ -92,6 +92,13 @@ Or you can get by query url:
 ```
 Responce
 ```javascript
-{ }
+{
+	"firstName" : "test",
+	"lastName" : "user",
+	"phone" : "4567121322",
+	"email" : "test@gmail.com",
+	"address" : "5th street, CA",
+	"tosAgreement" : true
+}
 ```
 
