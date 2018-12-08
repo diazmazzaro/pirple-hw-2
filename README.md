@@ -154,3 +154,32 @@ Response
     }
 ]
 ```
+## 4. Orders
+
+This endpoint provides the methods to add items to user shopping bag. You can add as many items as you want (no limit).
+
+### Add menu item to shipping bag
+_POST_ body to __~/orders__ (email and menu id is required)
+```javascript
+{
+	"menuId" : "menu1",
+	"email" : "diazmazzaro@gmail.com"
+}
+```
+Response
+```javascript
+{ }
+```
+
+### Remove menu item to shipping bag
+_DELTE_ body to __~/orders__ (email and menu id is required) (if you have many itemes for the same menu, this method only remove one)
+```javascript
+{
+	"menuId" : "menu1",
+	"email" : "diazmazzaro@gmail.com"
+}
+```
+Response
+```javascript
+{ }
+```
