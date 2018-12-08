@@ -18,7 +18,7 @@ _POST_ body to __~/tokens__
 Responce
 ```javascript
 {
-    "email": "diazmazzaro@gmail.com",
+    "email": "mail@server.com",
     "id": "vh6tvkd3vj0ylsg4kvqt",
     "expires": 1544311736418
 }
