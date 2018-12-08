@@ -163,7 +163,7 @@ _POST_ body to __~/orders__ (email and menu id is required)
 ```javascript
 {
 	"menuId" : "menu1",
-	"email" : "diazmazzaro@gmail.com"
+	"email" : "test@gmail.com"
 }
 ```
 Response
@@ -176,7 +176,7 @@ _DELTE_ body to __~/orders__ (email and menu id is required) (if you have many i
 ```javascript
 {
 	"menuId" : "menu1",
-	"email" : "diazmazzaro@gmail.com"
+	"email" : "test@gmail.com"
 }
 ```
 Response
