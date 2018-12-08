@@ -233,3 +233,16 @@ Response
     "count": 1
 }
 ```
+
+### Ckeckout by Stripe
+_POST_ body to __~/checkout__ (email is required) 
+```javascript
+{
+	"email" : "test@gmail.com"
+}
+```
+
+Response
+```javascript
+{ }
+```
