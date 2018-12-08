@@ -77,3 +77,21 @@ Responce
 { }
 ```
 
+### Get User
+_GET_ body to __~/users__ (Only email is required)
+You can get by body:
+```javascript
+{
+	"email" : "test@gmail.com"
+}
+```
+
+Or you can get by query url:
+```javascript
+~/users?email=test@gmail.com
+```
+Responce
+```javascript
+{ }
+```
+
