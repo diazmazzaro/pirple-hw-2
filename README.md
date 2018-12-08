@@ -120,3 +120,37 @@ Response
     "price": 3.2
 }
 ```
+### Get menu items list
+_GET_ to __~/menus__ (email  is required)
+```javascript
+~/menus?email=test@gmail.com
+```
+Response
+```javascript
+[
+    {
+        "id": "menu1",
+        "name": "GODFATHER",
+        "description": "Pepperoni, fresh tomato, capsicum, Italian sausage, olives, oregano & garlic sauce",
+        "price": 3.2
+    },
+    {
+        "id": "menu2",
+        "name": "CHICKEN, BACON & AVOCADO",
+        "description": "Succulent seasoned chicken, Avocado, crispy rasher bacon, red onion topped with hollandaise sauce and spring onion.",
+        "price": 4.15
+    },
+    {
+        "id": "menu3",
+        "name": "MEGA MEATLOVERS",
+        "description": "Succulent chicken, Italian sausage, crispy rasher bacon, ground beef, pepperoni, pork & fennel sausage topped with Hickory BBQ sauce",
+        "price": 4.98
+    },
+    {
+        "id": "menu4",
+        "name": "CHEESY CHICKEN, BACON & CHORIZO",
+        "description": "Succulent seasoned chicken, Spanish style chorizo, crispy rasher bacon, fire roasted peppers, red onion topped with lots of stretchy mozzarella.",
+        "price": 3.15
+    }
+]
+```
