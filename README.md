@@ -183,3 +183,31 @@ Response
 ```javascript
 { }
 ```
+
+### Get orders in the bag
+_GET_ body to __~/orders__ (email is required) 
+```javascript
+{
+	"email" : "test@gmail.com"
+}
+```
+
+Response
+```javascript
+{
+    "userId": "diazmazzaro_gmail.com",
+    "email": "diazmazzaro@gmail.com",
+    "orders": [
+        {
+            "menuId": "menu1",
+            "price": 3.2,
+            "purchased": false
+        },
+        {
+            "menuId": "menu1",
+            "price": 3.2,
+            "purchased": false
+        }
+    ]
+}
+```
