@@ -25,6 +25,12 @@ Responce
 ```
 Also you can __extend__ token's live by _put_ method or __delete__ by _delete_ method
 
+### Use token
+Always add the token header.
+```
+token:e666uvyq3d1j3mo02gju
+```
+
 ## 2. Users
 
 Endpoint for user management.
@@ -41,3 +47,4 @@ _POST_ body to __~/users__
 	"tosAgreement" : true
 }
 ```
+
