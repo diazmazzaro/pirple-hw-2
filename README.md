@@ -15,3 +15,29 @@ _POST_ body to __~/tokens__
 	"password" : "12345678"
 }
 ```
+Responce
+```javascript
+{
+    "email": "diazmazzaro@gmail.com",
+    "id": "vh6tvkd3vj0ylsg4kvqt",
+    "expires": 1544311736418
+}
+```
+Also you can __extend__ token's live by _put_ method or __delete__ by _delete_ method
+
+## 2. Users
+
+Endpoint for user management.
+### Create User
+_POST_ body to __~/users__
+```javascript
+{
+	"firstName" : "test",
+	"lastName" : "user",
+	"phone" : "4567121322",
+	"email" : "test@gmail.com",
+	"address" : "5th street, CA",
+	"password" : "12345678",
+	"tosAgreement" : true
+}
+```
