@@ -52,3 +52,28 @@ Responce
 { }
 ```
 
+### Update User
+_PUT_ body to __~/users__ (email is the key for users)
+```javascript
+{
+	"email" : "test@gmail.com",
+	"address" : "NEW street, CA"
+}
+```
+Responce
+```javascript
+{ }
+```
+
+### Delete User
+_DELETE_ body to __~/users__ (Only email is required)
+```javascript
+{
+	"email" : "test@gmail.com"
+}
+```
+Responce
+```javascript
+{ }
+```
+
