@@ -92,7 +92,6 @@ orders.post = function(data,callback){
 		      	fileDB.read('orders',id,function(err,data){
 		      		var orderObject;
 		      		var action = 'update';
-		      		console.log(err)
 			        if(err){
 			        	action = 'create';
 			        	// Create the order object
@@ -111,7 +110,6 @@ orders.post = function(data,callback){
 
 			        // Store the user
 			        fileDB[action]('orders',id,orderObject,function(err){
-			        	console.log(err)
 			          if(!err){
 			            callback(200);
 			          } else {

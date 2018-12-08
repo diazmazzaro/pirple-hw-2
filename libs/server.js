@@ -9,6 +9,8 @@ var http = require('http');
 var https = require('https');
 var url = require('url');
 var StringDecoder = require('string_decoder').StringDecoder;
+var util = require('util');
+var debug = util.debuglog('server');
 // App Dependencies
 var router = require('./router');
 var utils = require('./utils');
@@ -78,7 +80,7 @@ server.handler = function(req,res){
         res.setHeader('Content-Type', 'application/json');
         res.writeHead(statusCode);
         res.end(payloadString);
-        console.log(new Date().toISOString().split('T')[1].replace('Z', ''), server._getMethodeColorful(data.method), ':', data.path, '-',server._getStatusCodeColorful(statusCode));
+        debug(new Date().toISOString().split('T')[1].replace('Z', ''), server._getMethodeColorful(data.method), ':', data.path, '-',server._getStatusCodeColorful(statusCode));
       });
 
   });
@@ -95,7 +97,7 @@ server.init = function(config){
 
     // Start the HTTP server
     server.httpServer.listen(config.httpPort,function(){
-      console.log('The \x1b[32m\x1b[1mHTTP\x1b[0m server is running on port '+config.httpPort);
+      debug('The \x1b[32m\x1b[1mHTTP\x1b[0m server is running on port \x1b[34m\x1b[1m'+config.httpPort+'\x1b[0m');
     });
     // Instantiate the HTTPS server if exists config for it and SSL cert.
     if(config.httpsPort && config.ssl){
@@ -106,7 +108,7 @@ server.init = function(config){
 
       // Start the HTTPS server
       server.httpsServer.listen(config.httpsPort,function(){
-       console.log('The \x1b[31m\x1b[1mHTTPS\x1b[0m server is running on port '+config.httpsPort);
+       debug('The \x1b[31m\x1b[1mHTTPS\x1b[0m server is running on port \x1b[34m\x1b[1m'+config.httpsPort+'\x1b[0m');
       });
     }
   }
