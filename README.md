@@ -246,3 +246,18 @@ Response
 ```javascript
 { }
 ```
+
+### Warnings
+When any external APIs fails this method response a __waring__ massage.
+
+Ex. Response
+```javascript
+{
+    "warning": {
+        "statusCode": 400,
+        "error": {
+            "message": "exposed account credentials"
+        }
+    }
+}
+```
